@@ -1,0 +1,5 @@
+.idea
+vendor
+config/parameters.local.php
+docker-compose.override.yml
+.env

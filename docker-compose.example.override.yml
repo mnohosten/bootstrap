@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mysql:
+    image: mariadb:10.2
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - ./_docker/mysql/dump:/dump
+      - ./_docker/mysql/data:/var/lib/mysql
+    networks:
+      - web
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
+    environment:
+      - node.name=elasticsearch
+      - discovery.seed_hosts=elasticsearch
+      - cluster.initial_master_nodes=elasticsearch
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./_docker/elasticsearch:/usr/share/elasticsearch/data
+    networks:
+      - web
+    restart: always
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.2
+    ports:
+      - 15601:5601
+    networks:
+      - web

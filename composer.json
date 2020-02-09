@@ -1,0 +1,32 @@
+{
+  "name": "mnohosten/sameday.cz",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "": "packages/",
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "ext-iconv": "*",
+    "ext-mbstring": "*",
+    "ext-pdo": "*",
+    "ext-zip": "*",
+    "vrana/notorm": "dev-master",
+    "elasticsearch/elasticsearch": "^7.2",
+    "guzzlehttp/guzzle": "^6.5",
+    "league/oauth2-server": "^8.0",
+    "webmozart/assert": "^1.6",
+    "symfony/psr-http-message-bridge": "^1.2",
+    "twig/twig": "^3.0",
+    "overtrue/socialite": "^2.0",
+    "league/event": "^2.2",
+    "nesbot/carbon": "^2.29",
+    "symfony/http-foundation": "^4.0",
+    "vlucas/phpdotenv": "^4.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5",
+    "tracy/tracy": "^2.7"
+  }
+}
